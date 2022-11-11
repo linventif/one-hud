@@ -1,42 +1,20 @@
-# Informations
+# License
+### License : Free
+Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
-Module create by Linventif under Licence Creative Common 
+This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
 
-Only work with Cosmo
+[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
 
-Cosmos on Discord : https://discord.com/invite/anSyACqMbm
+[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
 
-Cosmos on Gmod Store : https://www.gmodstore.com/market/view/cosmo-the-all-in-one-suite
+### License : Commercial
+Contact me on Disord :) Join my discord and send me a private message.
 
+# Support
+Need Help ? Join my discord and create a post in support.
 
-
-# Cosmo Boost Shop Pack Compatible Version
-
-Cosmo : 1.8.5
-
-
-
-# Installation
-
-Just move the folder ember in your addon folder.
-
-For use a boost you need to rensing him into the Permanent weapons section like : boost_health 
-
-Boost Disponible : boost_health : boost_ammor : boost_ammo : boost_speed
-
-
-
-# Licence
-
-LICENCE -> CC BY-NC-SA 3.0
-https://creativecommons.org/licenses/by-nc-sa/3.0/
-
-
-
-# Contact Me :
-
-Discord -> Linventif#0253
-
-Discord Server -> https://dsc.gg/linventif
-
-Steam Profil -> https://steamcommunity.com/id/linventif/
+# Support me and join my Discord
+[![https://linventif.fr](https://i.imgur.com/UNSqmvK.png)](https://linventif.fr/discord)
