@@ -66,43 +66,9 @@ end
 print("| " .. name .. " | File Load | " .. folder .. "/sh_config.lua")
 //print("| " .. name .. " | File Load | " .. folder .. "/languages/" .. OneHud.Language .. ".lua")
 
-// -- // -- // -- // -- // -- // -- // -- // -- // -- //
-// Load All Files
-// -- // -- // -- // -- // -- // -- // -- // -- // -- //
-local function Loader(folder, name)
-    local files, folders = file.Find(folder .. "/*", "LUA")
-    for k, v in pairs(files) do
-        local path = folder .. "/" .. v
-        local cantLoad = false
-        if string.StartWith(v, "cl_") then
-            print("| " .. name .. " | File Load | " .. path)
-            if SERVER then
-                AddCSLuaFile(path)
-            else
-                include(path)
-            end
-        elseif string.StartWith(v, "sv_") then
-            print("| " .. name .. " | File Load | " .. path)
-            if SERVER then
-                include(path)
-            end
-        elseif string.StartWith(v, "sh_") then
-            print("| " .. name .. " | File Load | " .. path)
-            if SERVER then
-                AddCSLuaFile(path)
-            end
-            include(path)
-        else
-            print("| " .. name .. " | - Error - | File Name Invalid : " .. path)
-        end
-    end
-    for k, v in pairs(folders) do
-        loadFiles(folder .. "/" .. v)
-    end
-end
-Loader(folder .. "/shared", name)
-Loader(folder .. "/server", name)
-Loader(folder .. "/client", name)
+LinvLib.Loader(folder .. "/shared", name)
+LinvLib.Loader(folder .. "/server", name)
+LinvLib.Loader(folder .. "/client", name)
 
 print(" ")
 print(" ")

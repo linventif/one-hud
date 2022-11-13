@@ -25,8 +25,8 @@ OneHud.Config.Order = {
     //"Weapon",
     "Health",
     "Armor",
-    //"Food",
-    "Level",
+    "Food",
+    //"Level",
     "Props",
     "Ammo",
     "Special Ammo"
