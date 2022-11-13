@@ -1,3 +1,3 @@
-OneHud.Language["english"] = {
-
+OneHud.Language = {
+    ["armor"] = "Armor"
 }

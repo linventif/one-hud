@@ -1,7 +1,7 @@
 OneHud.Config = OneHud.Config or {}
 
 // Main Settings
-OneHud.Config.HUD = "Flat" // HUD Style (Flat - Flat Bar)
+OneHud.Config.HUD = "Flat Bar" // HUD Style (Flat - Flat Bar)
 OneHud.Config.Responsive = true // HUD Responsive
 OneHud.Config.TalkIcon = true // Talk Icon
 
@@ -21,22 +21,22 @@ OneHud.Config.Order = {
     "Name",
     //"Group",
     "Team",
-    "Money",
     //"Weapon",
     "Health",
     "Armor",
     "Food",
-    //"Level",
+    "Level",
     "Props",
     "Ammo",
-    "Special Ammo"
+    "Special Ammo",
+    "Money",
 }
 
 // Possition of the elements (left, right) only for Flat Theme
 OneHud.Config.Possition = {
     ["Name"] = "right",
     ["Group"] = "right",
-    ["Team"] = "right",
+    ["Team"] = "left",
     ["Money"] = "right",
     ["Weapon"] = "right",
     ["Health"] = "left",
@@ -47,6 +47,9 @@ OneHud.Config.Possition = {
     ["Ammo"] = "right",
     ["Special Ammo"] = "right"
 }
+
+// Message in the right bottom Flat Bar Theme
+OneHud.Config.FlatBarMessage = "dsc.gg/linventif"
 
 // Weapon to not show ammo
 OneHud.Config.HideAmmoWeps = {
