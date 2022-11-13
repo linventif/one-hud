@@ -1,3 +1,7 @@
+# Requirement
+Materials : https://steamcommunity.com/sharedfiles/filedetails/?id=2887943544
+Library : https://steamcommunity.com/sharedfiles/filedetails/?id=2882747990
+
 # License
 ### License : Free
 Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
