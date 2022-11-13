@@ -106,14 +106,6 @@ local function Smooth(smooth, val, max)
     return smooth
 end
 
-local function SpeWep()
-    for k, v in SortedPairs(OneHud.Config.Order) do
-        if v == "Special Ammo" then
-            return true
-        end
-    end
-    return false
-end
 local function AddBar(x, y, w, h, c)
     surface.SetDrawColor(c)
     surface.DrawRect(x, y, w, h)
@@ -378,7 +370,7 @@ hook.Add("HUDPaint", "HUDPaint", function()
                 SpWeLe = SpWeLe + string.len(level .. " - " .. nexlvl*100 .. "%") * 10 + math.Clamp(OneHud.Config.TextSize-10, 0, OneHud.Config.TextSize)
             elseif v == "Ammo" && !OneHud.Config.HideAmmoWeps[wepclass] && magammo != -1 then
                 local posx, posy = GetPos(OneHud.Config.Possition[v], SpWeRi, SpWeLe, SpHeRi, SpHeLe)
-                if SpeWep() then
+                if OneHud.Config.SpeAmmoWhenNone || ammo2 > 0 then
                     posy = posy - (40 + OneHud.Config.HeightSpacing)
                 end
                 AddBar(OneHud:RespX(posx), OneHud:RespY(posy), OneHud:RespX(MvIcon(v, 0)+300), OneHud:RespY(40), OneHud.Config.BackColor)
