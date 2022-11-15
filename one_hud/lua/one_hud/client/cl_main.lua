@@ -136,7 +136,7 @@ local function AddIcon(x, y, icon, color)
     end
 end
 
-local smHealth, smArmor, smAmmo, smFood, smLevel, smProps = 0, 0, 0, 0, 0, 0
+local smHealth, smArmor, smAmmo, smFood, smLevel, smProps, ping, pingcd = 0, 0, 0, 0, 0, 0, 0, 0
 
 hook.Add("HUDPaint", "HUDPaint", function()
     if OneHud.Config.FontLiveTest then
@@ -151,14 +151,26 @@ hook.Add("HUDPaint", "HUDPaint", function()
     if !LocalPlayer():Alive() || !IsValid(LocalPlayer()) then return end
 
     local ply = LocalPlayer()
-    local group = ply:GetUserGroup()
-    local name = ply:Nick()
-    local ping = ply:Ping()
+    local group = ply:GetUserGroup() or "user"
+    local name = ply:Nick() or "Unknown"
 
-    local health = math.Clamp(ply:Health(), 0, ply:GetMaxHealth())
-    local maxhealth = ply:GetMaxHealth()
-    local armor = math.Clamp(ply:Armor(), 0, ply:GetMaxArmor())
-    local maxarmor = ply:GetMaxArmor()
+    if pingcd < CurTime() then
+        ping = LocalPlayer():Ping() or 0
+        pingcd = CurTime() + OneHud.Config.PingRefrech
+    end
+
+    if ping < OneHud.Config.PingGood then
+        OneHud.Config.PingColor = OneHud.Config.PingColorGood
+    elseif ping > OneHud.Config.PingGood && ping < OneHud.Config.PingBad then
+        OneHud.Config.PingColor = OneHud.Config.PingColorMedium
+    else
+        OneHud.Config.PingColor = OneHud.Config.PingColorBad
+    end
+
+    local health = math.Clamp(ply:Health(), 0, ply:GetMaxHealth()) or 0
+    local maxhealth = ply:GetMaxHealth() or 100
+    local armor = math.Clamp(ply:Armor(), 0, ply:GetMaxArmor()) or 0
+    local maxarmor = ply:GetMaxArmor() or 100
     local props = ply:GetCount("props") or 0
     local maxprops = ply:GetNWInt("props_max") or -1
     if maxprops == 0 then maxprops = -1 end
@@ -194,16 +206,16 @@ hook.Add("HUDPaint", "HUDPaint", function()
         money = money .. " + " .. salary
     end
 
-    local teamcolor = team.GetColor(ply:Team())
-    local teamname = team.GetName(ply:Team())
+    local teamcolor = team.GetColor(ply:Team()) or Color(255, 255, 255, 255)
+    local teamname = team.GetName(ply:Team()) or "ERROR"
 
-    local wep = ply:GetActiveWeapon()
-    local wepclass = wep:GetClass()
+    local wep = ply:GetActiveWeapon() or "ERROR"
+    local wepclass = wep:GetClass() or "ERROR"
     local wepname = OneHud.Config.WepsName[wepclass] or wep:GetPrintName()
-    local ammo = ply:GetAmmoCount(wep:GetPrimaryAmmoType())
-    local magammo = wep:Clip1()
-    local maxammo = wep:GetMaxClip1()
-    local ammo2 = ply:GetAmmoCount(wep:GetSecondaryAmmoType())
+    local ammo = ply:GetAmmoCount(wep:GetPrimaryAmmoType()) or 0
+    local magammo = wep:Clip1() or 0
+    local maxammo = wep:GetMaxClip1() or 0
+    local ammo2 = ply:GetAmmoCount(wep:GetSecondaryAmmoType()) or 0
 
     local SpHeRi = 0
     local SpWeRi = 0
@@ -375,7 +387,12 @@ hook.Add("HUDPaint", "HUDPaint", function()
                 SpWeLe = SpWeLe + 45
                 smLevel = Smooth(smLevel, nexlvl, 1)
                 AddText(OneHud:RespX(SpWeLe),OneHud:RespY(posy+20), level .. " - " .. nexlvl*100 .. "%", v, 0)
-                SpWeLe = SpWeLe + OneHud.Config.WidthSpacing  + string.len(level .. " - " .. nexlvl*100 .. "%") * 10 + math.Clamp(OneHud.Config.TextSize-10, 0, OneHud.Config.TextSize)
+                SpWeLe = SpWeLe + OneHud.Config.WidthSpacing  + (string.len(level .. " - " .. nexlvl*100 .. "%") + 0.6) * 10 + math.Clamp(OneHud.Config.TextSize-10, 0, OneHud.Config.TextSize)
+            elseif v == "Ping" then
+                AddIcon(OneHud:RespX(SpWeLe), OneHud:RespY(posy+6), icons.ping, OneHud.Config.PingColor)
+                SpWeLe = SpWeLe + 45
+                AddText(OneHud:RespX(SpWeLe),OneHud:RespY(posy+20), math.Round(ping) .. "ms", v, 0)
+                SpWeLe = SpWeLe + OneHud.Config.WidthSpacing  + (string.len(level .. " - " .. nexlvl*100 .. "%")-0.6) * 10 + math.Clamp(OneHud.Config.TextSize-10, 0, OneHud.Config.TextSize)
             elseif v == "Ammo" && !OneHud.Config.HideAmmoWeps[wepclass] && magammo != -1 then
                 local posx, posy = GetPos(OneHud.Config.Possition[v], SpWeRi, SpWeLe, SpHeRi, SpHeLe)
                 if OneHud.Config.SpeAmmoWhenNone || ammo2 > 0 then

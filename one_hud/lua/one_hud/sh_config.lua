@@ -13,7 +13,7 @@ OneHud.Config.PropsWhenNone = false // Show Props when you have none
 OneHud.Config.SpeAmmoWhenNone = false // Show Special Ammo when you have none
 
 // Order of the elements remove for hide
-// Elements: Health, Armor, Money, Food, Team, Level, Name, Props, Group, Rank, Special Ammo, Weapon
+// Elements: Health, Armor, Money, Food, Team, Level, Name, Props, Group, Rank, Special Ammo, Weapon, Ping
 // Level is only compatible with https://github.com/uen/Leveling-System
 // Props is only compatible with Linventif Prop Limit https://github.com/linventif/gmod-scripts
 // Rank is only compatible with Linventif Rank System (in development)
@@ -29,7 +29,8 @@ OneHud.Config.Order = {
     "Team",
     "Ammo",
     "Special Ammo",
-    "Money",
+    "Ping", // only works with the theme Flat Bar
+    "Money"
 }
 
 // Possition of the elements (left, right) only for Flat Theme
@@ -77,6 +78,14 @@ OneHud.Config.MoneySymbol = "€" // Money Symbol
 OneHud.Config.MoneySeparator = " " // Money Separator
 OneHud.Config.Salary = true // Show Salary
 
+// Flat Bar Theme
+OneHud.Config.HeightSpacingFlatBar = 6 // Spacing of padding between the bars and the text
+OneHud.Config.WidthSpacing = 0 // Spacing ellement of the horizontal bar
+
+// Ping Settings
+OneHud.Config.PingGood = 100 // Ping Good
+OneHud.Config.PingBad = 200 // Ping Bad
+
 // Main Color Settings
 OneHud.Config.BackColor = Color(48, 48, 48) // Main Background Color
 OneHud.Config.IconColor = Color(156, 156, 156) // Icon Color Modificator
@@ -111,11 +120,17 @@ OneHud.Config.AmmoBackColor = Color(138, 71, 32) // Ammo Background Color
 OneHud.Config.SpeAmmoColor = Color(175, 61, 61) // Special Ammo Color
 OneHud.Config.SpeAmmoBackColor = Color(138, 32, 32) // Special Ammo Background Color
 
+// Ping Colors Settings
+OneHud.Config.PingColorGood = Color(73, 175, 81) // Ping Color
+OneHud.Config.PingColorMedium = Color(175, 97, 61) // Ping Color
+OneHud.Config.PingColorBad = Color(175, 61, 61) // Ping Color
+
 // Main Advenced Settings
 OneHud.Config.BackGroundBar = true // Show Background Bar
 OneHud.Config.TextFont = "Trebuchet24" // Text Font
 OneHud.Config.FontLiveTest = false // Font Live Test (Consumes a lot of FPS do not let in true)
 OneHud.Config.TextSize = 20 // Text Size
+OneHud.Config.PingRefrech = 5 // Ping Refrech Time
 OneHud.Config.HeightSpacing = 6 // Spacing between the bars -6 to collapse them
 OneHud.Config.AlwayText = { // Always show the elements in the order
     ["Name"] = true,
@@ -127,7 +142,3 @@ OneHud.Config.AlwayText = { // Always show the elements in the order
     ["Special Ammo"] = true,
     ["Level"] = true
 }
-
-// Flat Bar Theme
-OneHud.Config.HeightSpacingFlatBar = 6 // Spacing of padding between the bars and the text
-OneHud.Config.WidthSpacing = 0 // Spacing ellement of the horizontal bar
