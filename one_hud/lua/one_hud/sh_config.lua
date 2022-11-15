@@ -1,7 +1,7 @@
 OneHud.Config = OneHud.Config or {}
 
 // Main Settings
-OneHud.Config.HUD = "Flat Bar" // HUD Style (Flat - Flat Bar)
+OneHud.Config.HUD = "Flat Bar" // HUD Theme (Flat - Flat Bar)
 OneHud.Config.Responsive = true // HUD Responsive
 OneHud.Config.TalkIcon = true // Talk Icon
 
@@ -117,7 +117,6 @@ OneHud.Config.TextFont = "Trebuchet24" // Text Font
 OneHud.Config.FontLiveTest = false // Font Live Test (Consumes a lot of FPS do not let in true)
 OneHud.Config.TextSize = 20 // Text Size
 OneHud.Config.HeightSpacing = 6 // Spacing between the bars -6 to collapse them
-OneHud.Config.WidthSpacing = 6 // Spacing between the bars -6 to collapse them
 OneHud.Config.AlwayText = { // Always show the elements in the order
     ["Name"] = true,
     ["Group"] = true,
@@ -128,3 +127,7 @@ OneHud.Config.AlwayText = { // Always show the elements in the order
     ["Special Ammo"] = true,
     ["Level"] = true
 }
+
+// Flat Bar Theme
+OneHud.Config.HeightSpacingFlatBar = 6 // Spacing of padding between the bars and the text
+OneHud.Config.WidthSpacing = 0 // Spacing ellement of the horizontal bar
