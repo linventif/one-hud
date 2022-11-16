@@ -33,8 +33,10 @@ local full_name = "One HUD"
 local workshop = {}
 local license = "CC BY-SA 4.0"
 local version = 1.0
+
 OneHud = {}
-OneHud.Hud = {} or OneHud.Hud
+OneHud.Hud = {}
+OneHud.Config = {}
 
 // -- // -- // -- // -- // -- // -- // -- // -- // -- //
 // Print Console Informations
