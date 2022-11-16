@@ -11,7 +11,7 @@ OneHud.Config.TalkIcon = true // Talk Icon
 
 // What should be shown
 OneHud.Config.Text = true // Show Text
-OneHud.Config.MaxValue = true // Show Max Value
+OneHud.Config.MaxValue = false // Show Max Value if set false you will be modify the width space of the bar in Themes Settings
 OneHud.Config.Icon = true // Show Icon
 OneHud.Config.ArmorWhenNone = true // Show Armor when you have none
 OneHud.Config.PropsWhenNone = false // Show Props when you have none
@@ -99,6 +99,24 @@ OneHud.Config.Groups = {
 OneHud.Config.HeightSpacingFlatBar = 6 // Spacing of padding between the bars and the text
 OneHud.Config.WidthSpacing = 0 // Spacing ellement of the horizontal bar
 OneHud.Config.FlatBarMessage = "dsc.gg/linventif" // Message for on the Flat Bar Theme
+
+// Multiplier of the spacing
+OneHud.Config.MoreSpace = {
+    ["Level"] = 3,
+    ["Name"] = 3,
+    ["Team"] = 3,
+    ["Ping"] = 15,
+    ["Props"] = 4
+}
+
+// If Hide Max Value is true you can set the postfix
+OneHud.Config.Postfix = {
+    ["Health"] = "HP",
+    ["Armor"] = "%",
+    ["Food"] = "%",
+    ["Level"] = "lvl",
+    ["Props"] = " Props"
+}
 
 // -- // -- // -- // -- // -- // -- // -- //
 //                                        //
