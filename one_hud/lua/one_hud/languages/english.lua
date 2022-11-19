@@ -1,3 +1,4 @@
 OneHud.Language = {
-    ["armor"] = "Armor"
+    ["armor"] = "Armor",
+    ["wanted"] = "Rechercher"
 }

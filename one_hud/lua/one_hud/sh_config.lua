@@ -16,9 +16,10 @@ OneHud.Config.Icon = true // Show Icon
 OneHud.Config.ArmorWhenNone = true // Show Armor when you have none
 OneHud.Config.PropsWhenNone = false // Show Props when you have none
 OneHud.Config.SpeAmmoWhenNone = false // Show Special Ammo when you have none
+OneHud.Config.LicenseWhenNone = true // Show License when you have none
 
 // Order of the elements remove for hide
-// Elements: Health, Armor, Money, Food, Team, Level, Name, Props, Group, Rank, Special Ammo, Weapon, Ping
+// Elements: Health, Armor, Money, Food, Team, Level, Name, Props, Group, Rank, Special Ammo, Weapon, Ping, Wanted, License
 OneHud.Config.Order = {
     "Name",
 //  "Group",
@@ -33,7 +34,9 @@ OneHud.Config.Order = {
     "Ammo",
     "Special Ammo",
     "Ping", // only compatible with the theme : flat bar
-    "Money"
+    "Wanted",
+    "License",
+    "Money",
 }
 
 // Money Settings
@@ -89,7 +92,7 @@ OneHud.Config.Groups = {
 // -- // -- // -- // -- // -- // -- // -- //
 
 // -- //
-// Theme Settings : Flat 
+// Theme Settings : Flat
 // -- //
 
 // -- //
@@ -97,7 +100,7 @@ OneHud.Config.Groups = {
 // -- //
 
 OneHud.Config.HeightSpacingFlatBar = 6 // Spacing of padding between the bars and the text
-OneHud.Config.WidthSpacing = 0 // Spacing ellement of the horizontal bar
+OneHud.Config.WidthSpacing = 20 // Spacing ellement of the horizontal bar
 OneHud.Config.FlatBarMessage = "dsc.gg/linventif" // Message for on the Flat Bar Theme
 
 // Multiplier of the spacing
@@ -163,6 +166,12 @@ OneHud.Config.PingColorGood = Color(73, 175, 81) // Ping Color
 OneHud.Config.PingColorMedium = Color(175, 97, 61) // Ping Color
 OneHud.Config.PingColorBad = Color(175, 61, 61) // Ping Color
 
+// Wanted Colors Settings
+OneHud.Config.WantedColor = Color(190, 68, 68) // Icon Color
+
+// License Colors Settings
+OneHud.Config.LincenseColor = Color(68, 107, 190) // Icon Color
+
 // -- // -- // -- // -- // -- // -- // -- //
 //                                        //
 //            Advenced Settings           //
@@ -186,4 +195,17 @@ OneHud.Config.AlwayText = { // Always show the elements in the order
     ["Ammo"] = true,
     ["Special Ammo"] = true,
     ["Level"] = true
+}
+
+// -- // -- // -- // -- // -- // -- // -- //
+//                                        //
+//            Languages Settings          //
+//                                        //
+// -- // -- // -- // -- // -- // -- // -- //
+
+OneHud.Language = {
+    ["armor"] = "Armor",
+    ["wanted"] = "Rechercher",
+    ["yes"] = "Oui",
+    ["no"] = "Non"
 }

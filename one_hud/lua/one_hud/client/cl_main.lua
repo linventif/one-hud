@@ -15,6 +15,8 @@ local icons = {
     ["speammo"] =   Material("one_hud/spe_ammo.png"),
     ["weapon"]  =   Material("one_hud/weapon.png"),
     ["talk"]    =   Material("one_hud/talk.png"),
+    ["wanted"]  =   Material("one_hud/wanted.png"),
+    ["license"]  =   Material("one_hud/license.png"),
 }
 
 surface.CreateFont("OneHUDFont", {
@@ -115,6 +117,14 @@ local function AddBar(v, r, x, y, w, h, c)
     end
 end
 
+local function isright(element)
+    if OneHud.Config.Possition[element] == "right" then
+        return true
+    else
+        return false
+    end
+end
+
 local function AddText(x, y, t, force, aling)
     if aling == 0 then
         aling = TEXT_ALIGN_LEFT
@@ -152,10 +162,9 @@ local function AddIcon(x, y, icon, color)
     end
 end
 
-if !OneHud.Config.MaxValue then OneHud.Config.WidthSpacing = OneHud.Config.WidthSpacing + 20 end
-
 local smHealth, smArmor, smAmmo, smFood, smLevel, smProps, ping, pingcd = 0, 0, 0, 0, 0, 0, 0, 0
 local time = 0
+
 hook.Add("HUDPaint", "HUDPaint", function()
     if OneHud.Config.FontLiveTest then
         surface.CreateFont("OneHUDFont", {
@@ -195,7 +204,8 @@ hook.Add("HUDPaint", "HUDPaint", function()
 
     local salary = "" .. ply:getDarkRPVar("salary") or "ERROR"
     local food = ply:getDarkRPVar("Energy") or 100
-    local wanted = ply:getDarkRPVar("wanted") or 0
+    local wanted = ply:getDarkRPVar("wanted") or false
+    local license = ply:getDarkRPVar("HasGunlicense") or false
     local level = 0
     local nexlvl = 0
     if LevelSystemConfiguration then
@@ -286,7 +296,7 @@ hook.Add("HUDPaint", "HUDPaint", function()
                 AddBar(v, false, OneHud:RespX(posx), OneHud:RespY(posy), OneHud:RespX(MvIcon(v, 0)+300), OneHud:RespY(40), OneHud.Config.BackColor)
                 AddBar(v, false, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), OneHud:RespX(300-12), OneHud:RespY(40-12), OneHud.Config.HealthBackColor)
                 smHealth = Smooth(smHealth, health, maxhealth)
-                AddBar(v, true, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(smHealth * OneHud:RespX(288), 0, OneHud:RespX(288)), OneHud:RespY(40-12), OneHud.Config.HealthColor)
+                AddBar(v, isright(v), OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(smHealth * OneHud:RespX(288), 0, OneHud:RespX(288)), OneHud:RespY(40-12), OneHud.Config.HealthColor)
                 AddText(OneHud:RespX(posx+MvIcon(v, 2)+156),OneHud:RespY(posy+20), ShowMaxValue(v, math.Round(smHealth * maxhealth), " / " .. maxhealth), v, 1)
                 AddIcon(OneHud:RespX(posx+6+MvIcon(v, 1)), OneHud:RespY(posy+6), icons.health, OneHud.Config.HealthColor)
                 SpWeRi, SpWeLe, SpHeRi, SpHeLe = NewSpace(OneHud.Config.Possition[v], SpWeRi, SpWeLe, SpHeRi, SpHeLe)
@@ -295,7 +305,7 @@ hook.Add("HUDPaint", "HUDPaint", function()
                 AddBar(v, false, OneHud:RespX(posx), OneHud:RespY(posy), OneHud:RespX(MvIcon(v, 0)+300), OneHud:RespY(40), OneHud.Config.BackColor)
                 AddBar(v, false, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), OneHud:RespX(300-12), OneHud:RespY(40-12), OneHud.Config.FoodBackColor)
                 smFood = Smooth(smFood, food, 100)
-                AddBar(v, true, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(smFood * OneHud:RespX(288), 0, OneHud:RespX(288)), OneHud:RespY(40-12), OneHud.Config.FoodColor)
+                AddBar(v, isright(v), OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(smFood * OneHud:RespX(288), 0, OneHud:RespX(288)), OneHud:RespY(40-12), OneHud.Config.FoodColor)
                 AddText(OneHud:RespX(posx+MvIcon(v, 2)+156),OneHud:RespY(posy+20), ShowMaxValue(v, math.Round(smFood * 100)," / 100"), v, 1)
                 AddIcon(OneHud:RespX(posx+6+MvIcon(v, 1)), OneHud:RespY(posy+6), icons.food, OneHud.Config.FoodColor)
                 SpWeRi, SpWeLe, SpHeRi, SpHeLe = NewSpace(OneHud.Config.Possition[v], SpWeRi, SpWeLe, SpHeRi, SpHeLe)
@@ -304,7 +314,7 @@ hook.Add("HUDPaint", "HUDPaint", function()
                 AddBar(v, false, OneHud:RespX(posx), OneHud:RespY(posy), OneHud:RespX(MvIcon(v, 0)+300), OneHud:RespY(40), OneHud.Config.BackColor)
                 AddBar(v, false, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), OneHud:RespX(300-12), OneHud:RespY(40-12), OneHud.Config.ArmorBackColor)
                 smArmor = Smooth(smArmor, armor, maxarmor)
-                AddBar(v, true, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(smArmor * OneHud:RespX(288), 0, OneHud:RespX(288)), OneHud:RespY(40-12), OneHud.Config.ArmorColor)
+                AddBar(v, isright(v), OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(smArmor * OneHud:RespX(288), 0, OneHud:RespX(288)), OneHud:RespY(40-12), OneHud.Config.ArmorColor)
                 AddText(OneHud:RespX(posx+MvIcon(v, 2)+156),OneHud:RespY(posy+20), ShowMaxValue(v, math.Round(smArmor * maxarmor)," / " .. maxarmor), v, 1)
                 AddIcon(OneHud:RespX(posx+6+MvIcon(v, 1)), OneHud:RespY(posy+6), icons.shield, OneHud.Config.ArmorColor)
                 SpWeRi, SpWeLe, SpHeRi, SpHeLe = NewSpace(OneHud.Config.Possition[v], SpWeRi, SpWeLe, SpHeRi, SpHeLe)
@@ -313,7 +323,7 @@ hook.Add("HUDPaint", "HUDPaint", function()
                 AddBar(v, false, OneHud:RespX(posx), OneHud:RespY(posy), OneHud:RespX(MvIcon(v, 0)+300), OneHud:RespY(40), OneHud.Config.BackColor)
                 AddBar(v, false, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), OneHud:RespX(300-12), OneHud:RespY(40-12), OneHud.Config.PropsBackColor)
                 smProps = Smooth(smProps, props, maxprops)
-                AddBar(v, true, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(smProps * OneHud:RespX(288), 0, OneHud:RespX(288)), OneHud:RespY(40-12), OneHud.Config.PropsColor)
+                AddBar(v, isright(v), OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(smProps * OneHud:RespX(288), 0, OneHud:RespX(288)), OneHud:RespY(40-12), OneHud.Config.PropsColor)
                 AddText(OneHud:RespX(posx+MvIcon(v, 2)+156),OneHud:RespY(posy+20), ShowMaxValue(v, math.Round(smProps * maxprops), " / " .. maxprops), v, 1)
                 AddIcon(OneHud:RespX(posx+6+MvIcon(v, 1)), OneHud:RespY(posy+6), icons.props, OneHud.Config.PropsColor)
                 SpWeRi, SpWeLe, SpHeRi, SpHeLe = NewSpace(OneHud.Config.Possition[v], SpWeRi, SpWeLe, SpHeRi, SpHeLe)
@@ -322,7 +332,7 @@ hook.Add("HUDPaint", "HUDPaint", function()
                 AddBar(v, false, OneHud:RespX(posx), OneHud:RespY(posy), OneHud:RespX(MvIcon(v, 0)+300), OneHud:RespY(40), OneHud.Config.BackColor)
                 AddBar(v, false, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), OneHud:RespX(300-12), OneHud:RespY(40-12), OneHud.Config.LevelBackColor)
                 smLevel = Smooth(smLevel, nexlvl, 1)
-                AddBar(v, true, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(smLevel * OneHud:RespX(288), 0, OneHud:RespX(288)), OneHud:RespY(40-12), OneHud.Config.LevelColor)
+                AddBar(v, isright(v), OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(smLevel * OneHud:RespX(288), 0, OneHud:RespX(288)), OneHud:RespY(40-12), OneHud.Config.LevelColor)
                 AddText(OneHud:RespX(posx+MvIcon(v, 2)+156),OneHud:RespY(posy+20), ShowMaxValue(v, level, " - " .. nexlvl*100 .. "%"), v, 1)
                 AddIcon(OneHud:RespX(posx+6+MvIcon(v, 1)), OneHud:RespY(posy+6), icons.level, OneHud.Config.LevelColor)
                 SpWeRi, SpWeLe, SpHeRi, SpHeLe = NewSpace(OneHud.Config.Possition[v], SpWeRi, SpWeLe, SpHeRi, SpHeLe)
@@ -331,7 +341,7 @@ hook.Add("HUDPaint", "HUDPaint", function()
                 AddBar(v, false, OneHud:RespX(posx), OneHud:RespY(posy), OneHud:RespX(MvIcon(v, 0)+300), OneHud:RespY(40), OneHud.Config.BackColor)
                 AddBar(v, false, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), OneHud:RespX(300-12), OneHud:RespY(40-12), OneHud.Config.AmmoBackColor)
                 smAmmo = Smooth(smAmmo, magammo, maxammo)
-                AddBar(v, true, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(smAmmo * OneHud:RespX(288), 0, OneHud:RespX(288)), OneHud:RespY(40-12), OneHud.Config.AmmoColor)
+                AddBar(v, isright(v), OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(smAmmo * OneHud:RespX(288), 0, OneHud:RespX(288)), OneHud:RespY(40-12), OneHud.Config.AmmoColor)
                 AddText(OneHud:RespX(posx+MvIcon(v, 2)+156),OneHud:RespY(posy+20), magammo .. " / " .. maxammo .. " - " .. ammo, v, 1)
                 AddIcon(OneHud:RespX(posx+6+MvIcon(v, 1)), OneHud:RespY(posy+6), icons.ammo, OneHud.Config.AmmoColor)
                 SpWeRi, SpWeLe, SpHeRi, SpHeLe = NewSpace(OneHud.Config.Possition[v], SpWeRi, SpWeLe, SpHeRi, SpHeLe)
@@ -339,7 +349,7 @@ hook.Add("HUDPaint", "HUDPaint", function()
                 local posx, posy = GetPos(OneHud.Config.Possition[v], SpWeRi, SpWeLe, SpHeRi, SpHeLe)
                 AddBar(v, false, OneHud:RespX(posx), OneHud:RespY(posy), OneHud:RespX(MvIcon(v, 0)+300), OneHud:RespY(40), OneHud.Config.BackColor)
                 AddBar(v, false, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), OneHud:RespX(300-12), OneHud:RespY(40-12), OneHud.Config.SpeAmmoBackColor)
-                AddBar(v, false, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(ammo2, 0, 1)*OneHud:RespX(288), OneHud:RespY(40-12), OneHud.Config.SpeAmmoColor)
+                AddBar(v, isright(v), OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(ammo2, 0, 1)*OneHud:RespX(288), OneHud:RespY(40-12), OneHud.Config.SpeAmmoColor)
                 AddText(OneHud:RespX(posx+MvIcon(v, 2)+156),OneHud:RespY(posy+20), math.Clamp(ammo2, 0, 1) .. " / 1 - " .. math.Clamp(ammo2-1, 0, 9999), v, 1)
                 AddIcon(OneHud:RespX(posx+6+MvIcon(v, 1)), OneHud:RespY(posy+6), icons.speammo, OneHud.Config.SpeAmmoColor)
                 SpWeRi, SpWeLe, SpHeRi, SpHeLe = NewSpace(OneHud.Config.Possition[v], SpWeRi, SpWeLe, SpHeRi, SpHeLe)
@@ -361,10 +371,28 @@ hook.Add("HUDPaint", "HUDPaint", function()
                 AddText(OneHud:RespX(SpWeLe),OneHud:RespY(posy+20), money, v, 0)
                 SpWeLe = SpWeLe + OneHud.Config.WidthSpacing  + string.len(money) * (7 + ModeSpace(v)) + math.Clamp(OneHud.Config.TextSize-10, 0, OneHud.Config.TextSize)
             elseif v == "Team" then
+                local multi = 7
                 AddIcon(OneHud:RespX(SpWeLe), OneHud:RespY(posy+6), icons.team, OneHud.Config.IconColor)
                 SpWeLe = SpWeLe + 45
                 AddText(OneHud:RespX(SpWeLe),OneHud:RespY(posy+20), teamname, v, 0)
-                SpWeLe = SpWeLe + OneHud.Config.WidthSpacing  + string.len(teamname) * (7 + ModeSpace(v)) + math.Clamp(OneHud.Config.TextSize-10, 0, OneHud.Config.TextSize)
+                if string.len(teamname) > 10 then
+                    multi = 6
+                end
+                SpWeLe = SpWeLe + OneHud.Config.WidthSpacing + string.len(teamname) * (multi + ModeSpace(v)) + math.Clamp(OneHud.Config.TextSize-10, 0, OneHud.Config.TextSize)
+            elseif v == "Wanted" then
+                if !wanted then continue end
+                AddIcon(OneHud:RespX(SpWeLe), OneHud:RespY(posy+6), icons.wanted, OneHud.Config.WantedColor)
+                SpWeLe = SpWeLe + 45
+                AddText(OneHud:RespX(SpWeLe),OneHud:RespY(posy+20), OneHud.Language.wanted, v, 0)
+                SpWeLe = SpWeLe + OneHud.Config.WidthSpacing  + string.len(OneHud.Language.wanted) * (7 + ModeSpace(v)) + math.Clamp(OneHud.Config.TextSize-10, 0, OneHud.Config.TextSize)
+            elseif v == "License" then
+                if !license && !OneHud.Config.LicenseWhenNone then continue end
+                AddIcon(OneHud:RespX(SpWeLe), OneHud:RespY(posy+6), icons.license, OneHud.Config.LincenseColor)
+                SpWeLe = SpWeLe + 45
+                local txt = OneHud.Language.no
+                if license then txt = OneHud.Language.yes end
+                AddText(OneHud:RespX(SpWeLe),OneHud:RespY(posy+20), txt, v, 0)
+                SpWeLe = SpWeLe + OneHud.Config.WidthSpacing  + string.len(txt) * (10 + ModeSpace(v)) + math.Clamp(OneHud.Config.TextSize-10, 0, OneHud.Config.TextSize)
             elseif v == "Name" then
                 AddIcon(OneHud:RespX(SpWeLe), OneHud:RespY(posy+6), icons.name, OneHud.Config.IconColor)
                 SpWeLe = SpWeLe + 45
@@ -419,14 +447,14 @@ hook.Add("HUDPaint", "HUDPaint", function()
                 AddIcon(OneHud:RespX(SpWeLe), OneHud:RespY(posy+6), icons.ping, OneHud.Config.PingColor)
                 SpWeLe = SpWeLe + 45
                 AddText(OneHud:RespX(SpWeLe),OneHud:RespY(posy+20), math.Round(ping) .. "ms", v, 0)
-                SpWeLe = SpWeLe + OneHud.Config.WidthSpacing + string.len(ping) * 10 + math.Clamp(OneHud.Config.TextSize-10, 0, OneHud.Config.TextSize) + 25 + ModeSpace(v)
+                SpWeLe = SpWeLe + OneHud.Config.WidthSpacing + string.len(ping) * 10 + math.Clamp(OneHud.Config.TextSize-10, 0, OneHud.Config.TextSize) + 20 + ModeSpace(v)
             elseif v == "Ammo" && !OneHud.Config.HideAmmoWeps[wepclass] && magammo != -1 then
                 local posx, posy = GetPos(OneHud.Config.Possition[v], SpWeRi, SpWeLe, SpHeRi, SpHeLe)
                 if OneHud.Config.SpeAmmoWhenNone || ammo2 > 0 then
                     posy = posy - (40 + OneHud.Config.HeightSpacing)
                 end
                 AddBar(v, false, OneHud:RespX(posx), OneHud:RespY(posy), OneHud:RespX(MvIcon(v, 0)+300), OneHud:RespY(40), OneHud.Config.BackColor)
-                AddBar(v, false, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), OneHud:RespX(300-12), OneHud:RespY(40-12), OneHud.Config.AmmoBackColor)
+                AddBar(v, isright(v), OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), OneHud:RespX(300-12), OneHud:RespY(40-12), OneHud.Config.AmmoBackColor)
                 smAmmo = Smooth(smAmmo, magammo, maxammo)
                 AddBar(v, true, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(smAmmo * OneHud:RespX(288), 0, OneHud:RespX(288)), OneHud:RespY(40-12), OneHud.Config.AmmoColor)
                 AddText(OneHud:RespX(posx+MvIcon(v, 2)+156),OneHud:RespY(posy+20), magammo .. " / " .. maxammo .. " - " .. ammo, v, 1)
@@ -437,7 +465,7 @@ hook.Add("HUDPaint", "HUDPaint", function()
                 posy = posy + 40 + OneHud.Config.HeightSpacing
                 AddBar(v, false, OneHud:RespX(posx), OneHud:RespY(posy), OneHud:RespX(MvIcon(v, 0)+300), OneHud:RespY(40), OneHud.Config.BackColor)
                 AddBar(v, false, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), OneHud:RespX(300-12), OneHud:RespY(40-12), OneHud.Config.SpeAmmoBackColor)
-                AddBar(v, false, OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(ammo2, 0, 1)*OneHud:RespX(288), OneHud:RespY(40-12), OneHud.Config.SpeAmmoColor)
+                AddBar(v, isright(v), OneHud:RespX(posx+MvIcon(v, 2)+6), OneHud:RespY(posy+6), math.Clamp(ammo2, 0, 1)*OneHud:RespX(288), OneHud:RespY(40-12), OneHud.Config.SpeAmmoColor)
                 AddText(OneHud:RespX(posx+MvIcon(v, 2)+156),OneHud:RespY(posy+20), math.Clamp(ammo2, 0, 1) .. " / 1 - " .. math.Clamp(ammo2-1, 0, 9999), v, 1)
                 AddIcon(OneHud:RespX(posx+6+MvIcon(v, 1)), OneHud:RespY(posy+6), icons.speammo, OneHud.Config.SpeAmmoColor)
                 SpWeRi, SpWeLe, SpHeRi, SpHeLe = NewSpace(OneHud.Config.Possition[v], SpWeRi, SpWeLe, SpHeRi, SpHeLe)
