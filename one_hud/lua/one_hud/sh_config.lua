@@ -14,26 +14,29 @@ OneHud.Config.Text = true // Show Text
 OneHud.Config.MaxValue = false // Show Max Value if set false you will be modify the width space of the bar in Themes Settings
 OneHud.Config.Icon = true // Show Icon
 OneHud.Config.ArmorWhenNone = true // Show Armor when you have none
-OneHud.Config.PropsWhenNone = false // Show Props when you have none
+OneHud.Config.PropsWhenNone = true // Show Props when you have none
 OneHud.Config.SpeAmmoWhenNone = false // Show Special Ammo when you have none
+OneHud.Config.LicenseWhenNone = true // Show License when you have none
 
 // Order of the elements remove for hide
-// Elements: Health, Armor, Money, Food, Team, Level, Name, Props, Group, Rank, Special Ammo, Weapon, Ping
+// Elements: Health, Armor, Money, Food, Team, Level, Name, Props, Group, Rank, Special Ammo, Weapon, Ping, Wanted, License
 OneHud.Config.Order = {
     "Name",
-//  "Group",
-//  "Weapon",
+//    "Group",
+//    "Weapon",
     "Health",
     "Armor",
     "Food",
     "Props", // only compatible with Linventif Prop Limit https://github.com/linventif/gmod-scripts
     "Level", // Level Settings only compatible with https://github.com/uen/Leveling-System and https://github.com/GlorifiedPig/GlorifiedLeveling
-//  "Rank", // only compatible with Linventif Rank System (in development)
+    "Rank", // only compatible with Linventif Rank System (in development)
     "Team",
     "Ammo",
     "Special Ammo",
     "Ping", // only compatible with the theme : flat bar
-    "Money"
+    "Wanted",
+    "License",
+    "Money",
 }
 
 // Money Settings
@@ -47,11 +50,31 @@ OneHud.Config.Salary = true // Show Salary
 OneHud.Config.PingGood = 100 // Ping Good
 OneHud.Config.PingBad = 200 // Ping Bad
 
+ // Command to open the HUD Settings
+OneHud.Config.Command = {
+    ["!hud"] = true,
+    ["/hud"] = true,
+    ["!onehud"] = true,
+    ["/onehud"] = true,
+    ["!onehudsettings"] = true,
+    ["/onehudsettings"] = true,
+    ["!onehudconfig"] = true,
+    ["/onehudconfig"] = true,
+    ["!onehud_settings"] = true,
+    ["/onehud_settings"] = true,
+    ["!onehud_config"] = true,
+    ["/onehud_config"] = true,
+    ["!onehud-settings"] = true,
+    ["/onehud-settings"] = true,
+    ["!onehud-config"] = true,
+    ["/onehud-config"] = true,
+}
+
 // Possition of the elements (left, right)
 OneHud.Config.Possition = {
     ["Name"] = "right",
     ["Group"] = "right",
-    ["Team"] = "left",
+    ["Team"] = "right",
     ["Money"] = "right",
     ["Weapon"] = "right",
     ["Health"] = "left",
@@ -65,7 +88,8 @@ OneHud.Config.Possition = {
 
 // Weapon to not show ammo
 OneHud.Config.HideAmmoWeps = {
-    ["weapon_physcannon"] = true
+    ["weapon_physcannon"] = true,
+    ["weapon_bugbait"] = true,
 }
 
 // Weapon Name to show
@@ -89,7 +113,7 @@ OneHud.Config.Groups = {
 // -- // -- // -- // -- // -- // -- // -- //
 
 // -- //
-// Theme Settings : Flat 
+// Theme Settings : Flat
 // -- //
 
 // -- //
@@ -97,7 +121,7 @@ OneHud.Config.Groups = {
 // -- //
 
 OneHud.Config.HeightSpacingFlatBar = 6 // Spacing of padding between the bars and the text
-OneHud.Config.WidthSpacing = 0 // Spacing ellement of the horizontal bar
+OneHud.Config.WidthSpacing = 20 // Spacing ellement of the horizontal bar
 OneHud.Config.FlatBarMessage = "dsc.gg/linventif" // Message for on the Flat Bar Theme
 
 // Multiplier of the spacing
@@ -163,6 +187,12 @@ OneHud.Config.PingColorGood = Color(73, 175, 81) // Ping Color
 OneHud.Config.PingColorMedium = Color(175, 97, 61) // Ping Color
 OneHud.Config.PingColorBad = Color(175, 61, 61) // Ping Color
 
+// Wanted Colors Settings
+OneHud.Config.WantedColor = Color(190, 68, 68) // Icon Color
+
+// License Colors Settings
+OneHud.Config.LincenseColor = Color(68, 107, 190) // Icon Color
+
 // -- // -- // -- // -- // -- // -- // -- //
 //                                        //
 //            Advenced Settings           //
@@ -186,4 +216,17 @@ OneHud.Config.AlwayText = { // Always show the elements in the order
     ["Ammo"] = true,
     ["Special Ammo"] = true,
     ["Level"] = true
+}
+
+// -- // -- // -- // -- // -- // -- // -- //
+//                                        //
+//            Languages Settings          //
+//                                        //
+// -- // -- // -- // -- // -- // -- // -- //
+
+OneHud.Language = {
+    ["armor"] = "Armor",
+    ["wanted"] = "Rechercher",
+    ["yes"] = "Oui",
+    ["no"] = "Non"
 }
