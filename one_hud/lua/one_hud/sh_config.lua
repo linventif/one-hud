@@ -5,15 +5,16 @@
 // -- // -- // -- // -- // -- // -- // -- //
 
 // Main Settings
-OneHud.Config.Theme = "Flat Bar" // HUD Theme (Flat - Flat Bar)
-OneHud.Config.Responsive = true // HUD Responsive
+OneHud.Config.Theme = "Flat" // HUD Theme (Flat - Flat Bar)
+OneHud.Config.Responsive = false // HUD Responsive
 OneHud.Config.TalkIcon = true // Talk Icon
+OneHud.Config.RoundValue = 8 // Round Value (0 - 2)
 
 // What should be shown
 OneHud.Config.Text = true // Show Text
 OneHud.Config.MaxValue = false // Show Max Value if set false you will be modify the width space of the bar in Themes Settings
 OneHud.Config.Icon = true // Show Icon
-OneHud.Config.ArmorWhenNone = true // Show Armor when you have none
+OneHud.Config.ArmorWhenNone = false // Show Armor when you have none
 OneHud.Config.PropsWhenNone = false // Show Props when you have none
 OneHud.Config.SpeAmmoWhenNone = false // Show Special Ammo when you have none
 OneHud.Config.LicenseWhenNone = true // Show License when you have none
@@ -22,14 +23,14 @@ OneHud.Config.LicenseWhenNone = true // Show License when you have none
 // Elements: Health, Armor, Money, Food, Team, Level, Name, Props, Group, Rank, Special Ammo, Weapon, Ping, Wanted, License
 OneHud.Config.Order = {
     "Name",
-//  "Group",
-//  "Weapon",
+//    "Group",
+//    "Weapon",
     "Health",
     "Armor",
     "Food",
     "Props", // only compatible with Linventif Prop Limit https://github.com/linventif/gmod-scripts
     "Level", // Level Settings only compatible with https://github.com/uen/Leveling-System and https://github.com/GlorifiedPig/GlorifiedLeveling
-//  "Rank", // only compatible with Linventif Rank System (in development)
+    "Rank", // only compatible with Linventif Rank System (in development)
     "Team",
     "Ammo",
     "Special Ammo",
@@ -50,11 +51,31 @@ OneHud.Config.Salary = true // Show Salary
 OneHud.Config.PingGood = 100 // Ping Good
 OneHud.Config.PingBad = 200 // Ping Bad
 
+ // Command to open the HUD Settings
+OneHud.Config.Command = {
+    ["!hud"] = true,
+    ["/hud"] = true,
+    ["!onehud"] = true,
+    ["/onehud"] = true,
+    ["!onehudsettings"] = true,
+    ["/onehudsettings"] = true,
+    ["!onehudconfig"] = true,
+    ["/onehudconfig"] = true,
+    ["!onehud_settings"] = true,
+    ["/onehud_settings"] = true,
+    ["!onehud_config"] = true,
+    ["/onehud_config"] = true,
+    ["!onehud-settings"] = true,
+    ["/onehud-settings"] = true,
+    ["!onehud-config"] = true,
+    ["/onehud-config"] = true,
+}
+
 // Possition of the elements (left, right)
 OneHud.Config.Possition = {
     ["Name"] = "right",
     ["Group"] = "right",
-    ["Team"] = "left",
+    ["Team"] = "right",
     ["Money"] = "right",
     ["Weapon"] = "right",
     ["Health"] = "left",
@@ -68,7 +89,8 @@ OneHud.Config.Possition = {
 
 // Weapon to not show ammo
 OneHud.Config.HideAmmoWeps = {
-    ["weapon_physcannon"] = true
+    ["weapon_physcannon"] = true,
+    ["weapon_bugbait"] = true,
 }
 
 // Weapon Name to show
@@ -179,7 +201,7 @@ OneHud.Config.LincenseColor = Color(68, 107, 190) // Icon Color
 // -- // -- // -- // -- // -- // -- // -- //
 
 // Font Settings
-OneHud.Config.TextFont = "Trebuchet24" // Text Font
+OneHud.Config.TextFont = "Roboto" // Text Font
 OneHud.Config.FontLiveTest = false // Font Live Test (Consumes a lot of FPS do not let in true)
 OneHud.Config.TextSize = 20 // Text Size
 OneHud.Config.PingRefrech = 5 // Ping Refrech Time
