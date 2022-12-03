@@ -32,11 +32,12 @@ local name = "One HUD"
 local full_name = "One HUD"
 local workshop = {}
 local license = "CC BY-SA 4.0"
-local version = 1.0
+local version = "0.1.6"
 
 OneHud = {}
 OneHud.Hud = {}
 OneHud.Config = {}
+LinvLib.Install["one-hud"] = "0.1.6"
 
 // -- // -- // -- // -- // -- // -- // -- // -- // -- //
 // Print Console Informations
