@@ -1,20 +1,22 @@
 # Informations
 
-Linventif PreMade is a premade for addon, script, weapon, entity, etc. for Garry's Mod.
+This addon is a HUD for Garry's Mode, is 100% customizable and is compatible with all gamemodes and you can change the theme of the HUD.
 
 # Features
 
-- Premade of addon
+- 1
 
-- Premade of weapon
+- 2
 
-- Premade of entity
+- 3
 
 # Requirements
 
 - [Garry's Mod Server](https://store.steampowered.com/app/4000/Garrys_Mod/)
 
 - [Linventif Library](https://steamcommunity.com/sharedfiles/filedetails/?id=2882747990)
+
+- [One Hud Materials](https://steamcommunity.com/sharedfiles/filedetails/?id=2887943544)
 
 # Installation
 

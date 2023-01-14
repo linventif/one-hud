@@ -5,8 +5,9 @@
 // -- // -- // -- // -- // -- // -- // -- //
 
 // Main Settings
+OneHud.Language = "french" // Language (english - french) you can add your own language in sh_language.lua
 OneHud.Config.Theme = "Flat" // HUD Theme (Flat - Flat Bar)
-OneHud.Config.Responsive = false // HUD Responsive
+OneHud.Config.Responsive = true // HUD Responsive
 OneHud.Config.TalkIcon = true // Talk Icon
 OneHud.Config.RoundValue = 8 // Round Value (0 - 2)
 
@@ -14,7 +15,7 @@ OneHud.Config.RoundValue = 8 // Round Value (0 - 2)
 OneHud.Config.Text = true // Show Text
 OneHud.Config.MaxValue = false // Show Max Value if set false you will be modify the width space of the bar in Themes Settings
 OneHud.Config.Icon = true // Show Icon
-OneHud.Config.ArmorWhenNone = false // Show Armor when you have none
+OneHud.Config.ArmorWhenNone = true // Show Armor when you have none
 OneHud.Config.PropsWhenNone = false // Show Props when you have none
 OneHud.Config.SpeAmmoWhenNone = false // Show Special Ammo when you have none
 OneHud.Config.LicenseWhenNone = true // Show License when you have none
@@ -28,8 +29,8 @@ OneHud.Config.Order = {
     "Health",
     "Armor",
     "Food",
-    "Props", // only compatible with Linventif Prop Limit https://github.com/linventif/gmod-scripts
-    "Level", // Level Settings only compatible with https://github.com/uen/Leveling-System and https://github.com/GlorifiedPig/GlorifiedLeveling
+    "Props", // Only compatible with Linventif Prop Limit https://github.com/linventif/gmod-scripts
+//    "Level", // Level Settings only compatible with https://github.com/uen/Leveling-System and https://github.com/GlorifiedPig/GlorifiedLeveling
     "Rank", // only compatible with Linventif Rank System (in development)
     "Team",
     "Ammo",
@@ -51,24 +52,10 @@ OneHud.Config.Salary = true // Show Salary
 OneHud.Config.PingGood = 100 // Ping Good
 OneHud.Config.PingBad = 200 // Ping Bad
 
- // Command to open the HUD Settings
+// Command to open the HUD Settings
 OneHud.Config.Command = {
     ["!hud"] = true,
     ["/hud"] = true,
-    ["!onehud"] = true,
-    ["/onehud"] = true,
-    ["!onehudsettings"] = true,
-    ["/onehudsettings"] = true,
-    ["!onehudconfig"] = true,
-    ["/onehudconfig"] = true,
-    ["!onehud_settings"] = true,
-    ["/onehud_settings"] = true,
-    ["!onehud_config"] = true,
-    ["/onehud_config"] = true,
-    ["!onehud-settings"] = true,
-    ["/onehud-settings"] = true,
-    ["!onehud-config"] = true,
-    ["/onehud-config"] = true,
 }
 
 // Possition of the elements (left, right)
@@ -145,12 +132,37 @@ OneHud.Config.Postfix = {
 
 // -- // -- // -- // -- // -- // -- // -- //
 //                                        //
+//            Advenced Settings           //
+//                                        //
+// -- // -- // -- // -- // -- // -- // -- //
+
+// Font Settings
+OneHud.Config.TextFont = "Roboto" // Text Font
+OneHud.Config.FontLiveTest = false // Font Live Test (Consumes a lot of FPS do not let in true)
+OneHud.Config.TextSize = 20 // Text Size
+
+// Other Settings
+OneHud.Config.PingRefrech = 5 // Ping Refrech Time
+OneHud.Config.HeightSpacing = 6 // Spacing between the bars -6 to collapse the bars
+OneHud.Config.AlwayText = { // Always show the elements in the order
+    ["Name"] = true,
+    ["Group"] = true,
+    ["Team"] = true,
+    ["Money"] = true,
+    ["Weapon"] = true,
+    ["Ammo"] = true,
+    ["Special Ammo"] = true,
+    ["Level"] = true
+}
+
+// -- // -- // -- // -- // -- // -- // -- //
+//                                        //
 //         User Interface Settings        //
 //                                        //
 // -- // -- // -- // -- // -- // -- // -- //
 
 // Main Color Settings
-OneHud.Config.BackColor = Color(48, 48, 48) // Main Background Color
+OneHud.Config.BackColor = Color(51, 51, 51) // Main Background Color
 OneHud.Config.IconColor = Color(156, 156, 156) // Icon Color Modificator
 OneHud.Config.TextColor = Color(255, 255, 255) // Text Color
 OneHud.Config.TextBackColor = Color(83, 83, 83) // Text Background Color
@@ -193,41 +205,3 @@ OneHud.Config.WantedColor = Color(190, 68, 68) // Icon Color
 
 // License Colors Settings
 OneHud.Config.LincenseColor = Color(68, 107, 190) // Icon Color
-
-// -- // -- // -- // -- // -- // -- // -- //
-//                                        //
-//            Advenced Settings           //
-//                                        //
-// -- // -- // -- // -- // -- // -- // -- //
-
-// Font Settings
-OneHud.Config.TextFont = "Roboto" // Text Font
-OneHud.Config.FontLiveTest = false // Font Live Test (Consumes a lot of FPS do not let in true)
-OneHud.Config.TextSize = 20 // Text Size
-OneHud.Config.PingRefrech = 5 // Ping Refrech Time
-OneHud.Config.HeightSpacing = 6 // Spacing between the bars -6 to collapse
-
-// Others Settings
-OneHud.Config.AlwayText = { // Always show the elements in the order
-    ["Name"] = true,
-    ["Group"] = true,
-    ["Team"] = true,
-    ["Money"] = true,
-    ["Weapon"] = true,
-    ["Ammo"] = true,
-    ["Special Ammo"] = true,
-    ["Level"] = true
-}
-
-// -- // -- // -- // -- // -- // -- // -- //
-//                                        //
-//            Languages Settings          //
-//                                        //
-// -- // -- // -- // -- // -- // -- // -- //
-
-OneHud.Language = {
-    ["armor"] = "Armor",
-    ["wanted"] = "Rechercher",
-    ["yes"] = "Oui",
-    ["no"] = "Non"
-}

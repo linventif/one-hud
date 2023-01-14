@@ -11,7 +11,7 @@ if OneHud.Config.TalkIcon then
             backwards = 1
         end
 
-        surface.SetMaterial(icons.talk)
+        surface.SetMaterial(Material("one_hud/talk.png"))
         surface.SetDrawColor(OneHud.Config.IconColor)
         surface.DrawTexturedRectRotated(x, y, Rotating * 64, 64,  backwards)
     end
@@ -52,12 +52,3 @@ hook.Add("HUDShouldDraw", "HideDefautHUD", function(name )
         return false
     end
 end)
-
-hook.Add("OnPlayerChat", "onehud", function(ply, strText, bTeam, bDead) 
-    if (ply != LocalPlayer()) then return end
-	strText = string.lower(strText)
-	if (OneHud.Config.Command[strText]) then
-        RunConsoleCommand("onehud")
-		return true
-	end
-end )
