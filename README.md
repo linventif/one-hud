@@ -16,8 +16,6 @@ This addon is a HUD for Garry's Mode, is 100% customizable and is compatible wit
 
 - [Linventif Library](https://steamcommunity.com/sharedfiles/filedetails/?id=2882747990)
 
-- [One Hud Materials](https://steamcommunity.com/sharedfiles/filedetails/?id=2887943544)
-
 # Installation
 
 1. Install all the requirements.
