@@ -73,9 +73,9 @@ end
 
 local function AddBar(round, value, right, x, y, w, h, c)
     if right then
-        draw.RoundedBox(math.Clamp(OneHud.Config.RoundValue + round, 0, 28), x+(300-12)-w, y, w, h, c)
+        draw.RoundedBox(math.Clamp(RespW(OneHud.Config.RoundValue + round), 0, 28), x+(300-12)-w, y, w, h, c)
     else
-        draw.RoundedBox(math.Clamp(OneHud.Config.RoundValue + round, 0, 28), x, y, w, h, c)
+        draw.RoundedBox(math.Clamp(RespW(OneHud.Config.RoundValue + round), 0, 28), x, y, w, h, c)
     end
 end
 
