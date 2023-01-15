@@ -13,8 +13,6 @@ surface.CreateFont("OneHUDFont", {
 	weight = 500,
 })
 
-PrintTable(OneHud.Config.Color)
-
 local function GetPos(element, SpWeRi, SpWeLe, SpHeRi, SpHeLe)
     local iconspace = 0
     if OneHud.Config.Icon then
