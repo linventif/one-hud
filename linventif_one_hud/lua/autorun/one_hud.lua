@@ -23,7 +23,7 @@ end
 local folder = "one_hud"
 local name = "One HUD"
 local license = "CC BY-SA 4.0"
-local version = "0.2.0"
+local version = "0.2.1"
 
 OneHud = {}
 OneHud.Hud = {}

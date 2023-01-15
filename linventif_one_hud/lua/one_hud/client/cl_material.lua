@@ -16,7 +16,12 @@ local imgurID = {
     ["team"] = "ybwo4Ly",
     ["wallet"] = "TA1hulk",
     ["wanted"] = "16jvlRU",
-    ["weapon"] = "TRPakOw"
+    ["weapon"] = "TRPakOw",
+    ["generic"] = "fpo7Leu",
+    ["error"] = "3xpfTZ9",
+    ["undo"] = "fsaKHCV",
+    ["hint"] = "16jvlRU",
+    ["cleanup"] = "pget280"
 }
 
 LinvLib.CreateImgurMaterials(imgurID, OneHud.Materials, "one_hud", "One HUD")

@@ -38,7 +38,14 @@ local theme = {
             ["bad"] = Color(175, 61, 61)
         },
         ["wanted"] = Color(190, 68, 68),
-        ["license"] = Color(68, 107, 190)
+        ["license"] = Color(68, 107, 190),
+        ["notif"] = {
+            ["generic"] = Color(241, 196, 15),
+            ["error"] = Color(231, 76, 60),
+            ["undo"] = Color(28, 168, 86),
+            ["hint"] = Color(52, 152, 219),
+            ["cleanup"] = Color(155, 89, 182)
+        }
     }
 }
 

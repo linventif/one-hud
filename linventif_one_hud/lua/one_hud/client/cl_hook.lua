@@ -11,8 +11,8 @@ if OneHud.Config.TalkIcon then
             backwards = 1
         end
 
-        surface.SetMaterial(Material("one_hud/talk.png"))
-        surface.SetDrawColor(OneHud.Config.IconColor)
+        surface.SetMaterial(OneHud.Materials["talk"])
+        surface.SetDrawColor(OneHud.Config.Color["icon"])
         surface.DrawTexturedRectRotated(x, y, Rotating * 64, 64,  backwards)
     end
 
