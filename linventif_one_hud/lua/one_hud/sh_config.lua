@@ -7,7 +7,7 @@
 // Main Settings
 OneHud.Language = "french" // Language (english - french) you can add your own language in sh_language.lua
 OneHud.Config.Theme = "Flat" // HUD Theme (Flat - Flat Bar)
-OneHud.Config.Responsive = true // HUD Responsive
+OneHud.Config.ThemeColor = "sentro" // HUD Theme Color (sentro)
 OneHud.Config.TalkIcon = true // Talk Icon
 OneHud.Config.RoundValue = 8 // Round Value (0 - 2)
 
@@ -154,54 +154,3 @@ OneHud.Config.AlwayText = { // Always show the elements in the order
     ["Special Ammo"] = true,
     ["Level"] = true
 }
-
-// -- // -- // -- // -- // -- // -- // -- //
-//                                        //
-//         User Interface Settings        //
-//                                        //
-// -- // -- // -- // -- // -- // -- // -- //
-
-// Main Color Settings
-OneHud.Config.BackColor = Color(51, 51, 51) // Main Background Color
-OneHud.Config.IconColor = Color(156, 156, 156) // Icon Color Modificator
-OneHud.Config.TextColor = Color(255, 255, 255) // Text Color
-OneHud.Config.TextBackColor = Color(83, 83, 83) // Text Background Color
-
-// Health Colors Settings
-OneHud.Config.HealthColor = Color(190, 68, 68) // Health Color
-OneHud.Config.HealthBackColor = Color(121, 45, 45) // Health Background Color
-
-// Armor Colors Settings
-OneHud.Config.ArmorColor = Color(68, 125, 190) // Armor Color
-OneHud.Config.ArmorBackColor = Color(45, 63, 121) // Armor Background Color
-
-// Food Colors Settings
-OneHud.Config.FoodColor = Color(190, 162, 68) // Food Color
-OneHud.Config.FoodBackColor = Color(121, 107, 45) // Food Background Color
-
-// Level Colors Settings
-OneHud.Config.LevelColor = Color(121, 73, 175) // Level Color
-OneHud.Config.LevelBackColor = Color(92, 49, 141) // Level Background Color
-
-// Props Colors Settings
-OneHud.Config.PropsColor = Color(73, 175, 81) // Props Color
-OneHud.Config.PropsBackColor = Color(36, 104, 42) // Props Background Color
-
-// Ammo Colors Settings
-OneHud.Config.AmmoColor = Color(175, 97, 61) // Ammo Color
-OneHud.Config.AmmoBackColor = Color(138, 71, 32) // Ammo Background Color
-
-// Special Ammo Colors Settings
-OneHud.Config.SpeAmmoColor = Color(175, 61, 61) // Special Ammo Color
-OneHud.Config.SpeAmmoBackColor = Color(138, 32, 32) // Special Ammo Background Color
-
-// Ping Colors Settings
-OneHud.Config.PingColorGood = Color(73, 175, 81) // Ping Color
-OneHud.Config.PingColorMedium = Color(175, 97, 61) // Ping Color
-OneHud.Config.PingColorBad = Color(175, 61, 61) // Ping Color
-
-// Wanted Colors Settings
-OneHud.Config.WantedColor = Color(190, 68, 68) // Icon Color
-
-// License Colors Settings
-OneHud.Config.LincenseColor = Color(68, 107, 190) // Icon Color
