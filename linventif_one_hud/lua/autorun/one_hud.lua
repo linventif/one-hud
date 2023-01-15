@@ -22,10 +22,8 @@ end
 
 local folder = "one_hud"
 local name = "One HUD"
-local full_name = "One HUD"
-local workshop = {}
 local license = "CC BY-SA 4.0"
-local version = "0.1.8"
+local version = "0.2.0"
 
 OneHud = {}
 OneHud.Hud = {}
@@ -34,19 +32,9 @@ LinvLib.Install["one-hud"] = version
 
 // -- // -- // -- // -- // -- // -- // -- // -- // -- //
 
-include(folder .. "/sh_config.lua")
-print("| " .. name .. " | File Load | " .. folder .. "/sh_config.lua")
-
-if SERVER then
-    AddCSLuaFile(folder .. "/sh_config.lua")
-    LinvLib.LoadWorkshop(workshop, name)
-    LinvLib.LoadMaterials(folder .. "/materials", name)
-end
-
-LinvLib.Loader(folder .. "/shared", name)
-LinvLib.Loader(folder .. "/server", name)
+LinvLib.LoadStr(name, version, license)
+LinvLib.Load(name, folder, {"sh_config.lua", "sh_language.lua"})
 LinvLib.Loader(folder .. "/client", name)
-LinvLib.LoadStr(full_name, version, license)
 
 print(" ")
 print(" ")
