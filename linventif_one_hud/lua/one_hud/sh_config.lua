@@ -5,11 +5,11 @@
 // -- // -- // -- // -- // -- // -- // -- //
 
 // Main Settings
-OneHud.Language = "french" // Language (english - french) you can add your own language in sh_language.lua
+OneHud.Config.Language = "french" // Language (english - french) you can add your own language in sh_language.lua
 OneHud.Config.Theme = "Flat" // HUD Theme (Flat - Flat Bar)
 OneHud.Config.ThemeColor = "sentro" // HUD Theme Color (sentro)
 OneHud.Config.TalkIcon = true // Talk Icon
-OneHud.Config.RoundValue = 8 // Round Value (0 - 2)
+OneHud.Config.RoundValue = 8 // Round Value (0 = disable)
 
 // What should be shown
 OneHud.Config.Text = true // Show Text

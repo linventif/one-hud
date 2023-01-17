@@ -53,5 +53,5 @@ languages["french"] = {
 // -- // -- // -- // -- // -- // -- // -- //
 
 function OneHud.GetTranslation(id)
-    return languages[OneHud.Config.Language][id] or "ERROR"
+    return languages[OneHud.Config.Language][id] || id
 end
