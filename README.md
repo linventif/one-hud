@@ -40,20 +40,15 @@ This addon is a HUD for Garry's Mode, is 100% customizable and is compatible wit
 ## Requirements
 
 - [Garry's Mod Server](https://store.steampowered.com/app/4000/Garrys_Mod/)
-
 - [Garry's Mod Workshop Collection](http://wiki.garrysmod.com/page/Workshop_for_Dedicated_Servers)
 - [Linventif's Stuff](https://steamcommunity.com/sharedfiles/filedetails/?id=2882747990)
 
 ## Installation
 
 1. Install all the requirements.
-
 2. Download the zip file frome the code button (is green).
-
 3. Extract files.
-
 4. Move the folder to your addons folder.
-
 5. Verify the success of the installation by opening the Monitor (say `!monitor` in chat) and check if the addon is loaded.
 
 ## Configuration & Language
